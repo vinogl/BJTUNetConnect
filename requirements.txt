@@ -1,0 +1,4 @@
+requests
+pyqt5
+pyinstaller
+setuptools
