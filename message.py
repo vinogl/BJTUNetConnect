@@ -26,9 +26,9 @@ class Message(QMainWindow, Ui_MessageWindow):
         password = self.password.text()
         connect_info = connect(user=user, password=password)
         if connect_info == '认证成功页':
-            QMessageBox.about(self, 'connect_info', '%s\n\n连接成功！' % connect_info)
+            QMessageBox.about(self, 'connect', '%s\n\n连接成功！' % connect_info)
         else:
-            QMessageBox.about(self, 'connect_info', '%s\n\n连接失败！' % connect_info)
+            QMessageBox.about(self, 'connect', '%s\n\n连接失败！' % connect_info)
 
     def save_message(self):
         """将ui的信息保存至指定文件(message_path)"""
