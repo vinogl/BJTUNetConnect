@@ -13,7 +13,6 @@ data: 请求信息(载荷)
 
 url = 'http://10.10.42.3'  # 校园网登录的url
 message_path = 'connect_message.txt'  # 用于储存账号密码
-logo_path = 'Logo/logo.txt'
 
 
 def connect(user: str, password: str):
@@ -39,9 +38,6 @@ def connect(user: str, password: str):
 
 
 if __name__ == '__main__':
-    # 打印logo
-    with open(logo_path, 'r', encoding='utf-8') as f:
-        print(f.read())
 
     if os.path.exists(message_path):
         """判断是否存在保存的登录信息"""
