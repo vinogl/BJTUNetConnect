@@ -40,7 +40,7 @@ def connect(user: str, password: str):
 
 if __name__ == '__main__':
     # 打印logo
-    with open(logo_path, 'r') as f:
+    with open(logo_path, 'r', encoding='utf-8') as f:
         print(f.read())
 
     if os.path.exists(message_path):
