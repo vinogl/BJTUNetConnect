@@ -24,8 +24,11 @@ class Message(QMainWindow, Ui_MessageWindow):
         """connect方法发送post请求连接校园网"""
         user = self.user.text()
         password = self.password.text()
-        connect(user=user, password=password)
-        QMessageBox.about(self, '', '连接成功')
+        connect_info = connect(user=user, password=password)
+        if connect_info == '认证成功页':
+            QMessageBox.about(self, '', '连接成功！')
+        else:
+            QMessageBox.about(self, '', '连接失败！')
 
     def save_message(self):
         """将ui的信息保存至指定文件(message_path)"""
