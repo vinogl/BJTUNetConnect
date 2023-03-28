@@ -13,6 +13,7 @@ data: 请求信息(载荷)
 
 url = 'http://10.10.42.3'  # 校园网登录的url
 message_path = 'connect_message.txt'  # 用于储存账号密码
+logo_path = 'Logo/logo.txt'
 
 
 def connect(user: str, password: str):
@@ -29,11 +30,18 @@ def connect(user: str, password: str):
         'para': '00',
     }
 
-    response = requests.post(url, data)  # 发送请求
+    try:
+        response = requests.post(url, data)  # 发送请求
+    except:
+        return '未接入校园网！'
+
     return BeautifulSoup(response.content, 'html.parser').title.string  # 返回响应html中的title标签值
 
 
 if __name__ == '__main__':
+    # 打印logo
+    with open(logo_path, 'r') as f:
+        print(f.read())
 
     if os.path.exists(message_path):
         """判断是否存在保存的登录信息"""
@@ -56,8 +64,8 @@ if __name__ == '__main__':
     connect_info = connect(user=user, password=password)
     if connect_info == '认证成功页':
         """判断是否连接成功"""
-        print('连接成功！')
+        print('\n%s\n\n连接成功！' % connect_info)
     else:
-        print('连接失败！')
+        print('\n%s\n\n连接失败！' % connect_info)
 
     time.sleep(2)
